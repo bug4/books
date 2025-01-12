@@ -8,7 +8,6 @@ const openai = new OpenAIApi(configuration);
 
 export const handler = async (event) => {
   try {
-    // Only allow POST requests
     if (event.httpMethod !== 'POST') {
       return { statusCode: 405, body: 'Method Not Allowed' };
     }
@@ -26,6 +25,7 @@ export const handler = async (event) => {
       statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify({
         message: completion.data.choices[0].message,
