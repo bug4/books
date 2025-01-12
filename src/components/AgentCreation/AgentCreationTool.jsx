@@ -6,7 +6,7 @@ import Personality from './Steps/Personality';
 import Expertise from './Steps/Expertise';
 import FinalizeAgent from './Steps/FinalizeAgent';
 
-const AgentCreationTool = ({ onClose }) => {
+const AgentCreationTool = ({ onClose, onCreated }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [agentData, setAgentData] = useState({
     // Basic Info
@@ -46,30 +46,35 @@ const AgentCreationTool = ({ onClose }) => {
     if (currentStep > 1) setCurrentStep(prev => prev - 1);
   };
 
-  const handleFinish = async () => {
+  const handleFinish = async (finalData) => {
     try {
-      // API call to create agent
-      const response = await fetch('/api/create-agent', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(agentData)
-      });
-      
-      if (!response.ok) throw new Error('Failed to create agent');
-      
-      const data = await response.json();
-      console.log('Agent created:', data);
+      // Save agent to localStorage
+      const existingAgents = JSON.parse(localStorage.getItem('myAgents') || '[]');
+      const newAgents = [...existingAgents, finalData];
+      localStorage.setItem('myAgents', JSON.stringify(newAgents));
+
+      // Create system message
+      const systemMessage = `You are ${finalData.name}, an AI agent with the following characteristics:
+      Purpose: ${finalData.purpose}
+      Communication Style: ${finalData.communicationStyle}
+      Personality Traits: ${finalData.traits.join(', ')}
+      Expertise Domains: ${finalData.domains.join(', ')}`;
+
+      localStorage.setItem(`agent_${finalData.name}`, JSON.stringify({
+        ...finalData,
+        systemMessage
+      }));
+
+      onCreated?.(); // Notify parent component
       onClose();
     } catch (error) {
-      console.error('Error creating agent:', error);
+      console.error('Error saving agent:', error);
     }
   };
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
-      <div className="w-[600px] bg-black/80 border border-purple-500/30 backdrop-blur-md">
+      <div className="w-[600px] bg-black/80 border border-purple-500/30">
         {/* Header */}
         <div className="p-4 border-b border-purple-500/30 bg-purple-900/20 flex justify-between items-center">
           <h2 className="text-purple-400 text-xl">Create Your AI Agent</h2>
@@ -111,9 +116,9 @@ const AgentCreationTool = ({ onClose }) => {
           )}
           {currentStep === 4 && (
             <FinalizeAgent 
-              data={agentData} 
-              onFinish={handleFinish} 
-              onBack={handleBack} 
+              data={agentData}
+              onBack={handleBack}
+              onFinish={handleFinish}
             />
           )}
         </div>

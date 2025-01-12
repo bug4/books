@@ -4,14 +4,15 @@ import LoadingScreen from './components/LoadingScreen';
 import ChatInterface from './components/ChatInterface';
 import TokenStats from './components/TokenStats';
 import AgentCreationTool from './components/AgentCreation/AgentCreationTool';
-import MyAgents from './components/MyAgents';
-import { Plus } from 'lucide-react';
+import MyAgentsModal from './components/MyAgentsModal';
+import { Plus, Bot } from 'lucide-react';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSplineLoaded, setIsSplineLoaded] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   const [showAgentCreation, setShowAgentCreation] = useState(false);
+  const [showMyAgents, setShowMyAgents] = useState(false);
   const [selectedAgent, setSelectedAgent] = useState(null);
   const audioRef = useRef(null);
 
@@ -66,7 +67,16 @@ function App() {
         />
         <ChatInterface currentAgent={selectedAgent} />
         <TokenStats />
-        <MyAgents onSelectAgent={setSelectedAgent} />
+
+        {/* My Agents Button */}
+        <button
+          onClick={() => setShowMyAgents(true)}
+          className="absolute right-8 top-8 px-4 py-2 bg-purple-500/20 border border-purple-500/30 
+                     text-purple-400 hover:bg-purple-500/30 transition-colors flex items-center gap-2"
+        >
+          <Bot size={20} />
+          <span>My Agents</span>
+        </button>
 
         {/* Create Agent Button */}
         <button
@@ -78,9 +88,24 @@ function App() {
           <span>Create Agent</span>
         </button>
 
+        {/* My Agents Modal */}
+        <MyAgentsModal 
+          isOpen={showMyAgents}
+          onClose={() => setShowMyAgents(false)}
+          onSelectAgent={(agent) => {
+            setSelectedAgent(agent);
+          }}
+        />
+
         {/* Agent Creation Tool */}
         {showAgentCreation && (
-          <AgentCreationTool onClose={() => setShowAgentCreation(false)} />
+          <AgentCreationTool 
+            onClose={() => setShowAgentCreation(false)}
+            onCreated={() => {
+              setShowAgentCreation(false);
+              setShowMyAgents(true);
+            }}
+          />
         )}
       </div>
 
