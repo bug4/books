@@ -5,7 +5,8 @@ import ChatInterface from './components/ChatInterface';
 import TokenStats from './components/TokenStats';
 import AgentCreationTool from './components/AgentCreation/AgentCreationTool';
 import MyAgentsModal from './components/MyAgentsModal';
-import { Plus, Twitter, Volume2, VolumeX } from 'lucide-react';
+import ScanningInterface from './components/ScanningInterface';
+import { Plus, Twitter, Volume2, VolumeX, AlertCircle } from 'lucide-react';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -15,6 +16,7 @@ function App() {
   const [showMyAgents, setShowMyAgents] = useState(false);
   const [selectedAgent, setSelectedAgent] = useState(null);
   const [isMusicPlaying, setIsMusicPlaying] = useState(true);
+  const [showScanner, setShowScanner] = useState(false);
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -123,6 +125,18 @@ function App() {
             <Plus size={20} />
             <span>Create Agent</span>
           </button>
+
+          {/* Scanner Button */}
+          <button
+            onClick={() => setShowScanner(prev => !prev)}
+            className="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-black/30 
+                      backdrop-blur-md border border-purple-500/30 text-purple-400 
+                      hover:bg-purple-500/10 transition-colors flex items-center gap-2"
+          >
+            <AlertCircle size={20} />
+            <span>BOAI Scanning</span>
+          </button>
+
         </div>
 
         <TokenStats />
@@ -154,6 +168,8 @@ function App() {
               }}
             />
           )}
+
+          {showScanner && <ScanningInterface onClose={() => setShowScanner(false)} />}
         </div>
       </div>
 
