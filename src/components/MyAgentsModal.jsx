@@ -6,18 +6,24 @@ const MyAgentsModal = ({ isOpen, onClose, onSelectAgent }) => {
 
   React.useEffect(() => {
     if (isOpen) {
-      // Reload agents whenever modal opens
-      const savedAgents = JSON.parse(localStorage.getItem('myAgents') || '[]');
-      setAgents(savedAgents);
+      try {
+        const savedAgents = JSON.parse(localStorage.getItem('myAgents') || '[]');
+        console.log('Loaded agents:', savedAgents);
+        setAgents(savedAgents);
+      } catch (error) {
+        console.error('Error loading agents:', error);
+        setAgents([]);
+      }
     }
   }, [isOpen]);
 
+  // If not open, don't render anything
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
+    onClick={(e) => e.stopPropagation()}>
       <div className="w-[600px] bg-black/80 border border-purple-500/30">
-        {/* Header */}
         <div className="p-4 border-b border-purple-500/30 bg-purple-900/20 flex justify-between items-center">
           <h2 className="text-purple-400 text-xl">My AI Agents</h2>
           <button 
@@ -28,7 +34,6 @@ const MyAgentsModal = ({ isOpen, onClose, onSelectAgent }) => {
           </button>
         </div>
 
-        {/* Agents List */}
         <div className="max-h-[60vh] overflow-y-auto">
           {agents.length === 0 ? (
             <div className="p-8 text-center text-purple-400/60">
