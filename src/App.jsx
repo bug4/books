@@ -6,7 +6,17 @@ import TokenStats from './components/TokenStats';
 import AgentCreationTool from './components/AgentCreation/AgentCreationTool';
 import MyAgentsModal from './components/MyAgentsModal';
 import ScanningInterface from './components/ScanningInterface';
-import { Plus, Twitter, Volume2, VolumeX, AlertCircle } from 'lucide-react';
+import WalletPopup from './components/WalletPopup';
+import Alert from './components/Alert'; // <-- Import your Alert component
+import {
+  Plus,
+  Twitter,
+  Volume2,
+  VolumeX,
+  AlertCircle,
+  Settings,
+  Wallet,
+} from 'lucide-react';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,7 +27,13 @@ function App() {
   const [selectedAgent, setSelectedAgent] = useState(null);
   const [isMusicPlaying, setIsMusicPlaying] = useState(true);
   const [showScanner, setShowScanner] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [walletAddress, setWalletAddress] = useState(null);
+  const [showWalletPopup, setShowWalletPopup] = useState(false);
   const audioRef = useRef(null);
+
+  // 1) Add the alert state
+  const [alert, setAlert] = useState(null);
 
   useEffect(() => {
     return () => {
@@ -47,6 +63,42 @@ function App() {
     }
   };
 
+  // 2) Add the function to show alerts
+  const showAlert = (message) => {
+    setAlert(message);
+  };
+
+  const connectWallet = async () => {
+    try {
+      if (!window.solana || !window.solana.isPhantom) {
+        // Notice here you used "alert()" which conflicts with your Alert component name
+        // If you want to call your custom Alert component, use showAlert().
+        // If you actually want to use the browser alert, rename it to something else.
+        showAlert('Phantom wallet not found! Please install it.');
+        window.open('https://phantom.app/', '_blank');
+        return;
+      }
+
+      const response = await window.solana.connect();
+      console.log('Connected with PublicKey:', response.publicKey.toString());
+      setWalletAddress(response.publicKey.toString());
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const disconnectWallet = async () => {
+    try {
+      if (window.solana && window.solana.isConnected) {
+        await window.solana.disconnect();
+        setWalletAddress(null);
+        setShowWalletPopup(false);
+      }
+    } catch (error) {
+      console.error('Error disconnecting wallet:', error);
+    }
+  };
+
   function onLoad() {
     setIsSplineLoaded(true);
   }
@@ -59,6 +111,9 @@ function App() {
 
   return (
     <div className="relative w-full h-screen">
+      {/* 3) Render the Alert component immediately after the root div */}
+      {alert && <Alert message={alert} onClose={() => setAlert(null)} />}
+
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -120,23 +175,52 @@ function App() {
               setShowAgentCreation(true);
             }}
             className="absolute left-8 top-[calc(50%+310px)] w-80 p-3 border border-purple-500/30 
-                      bg-black/30 backdrop-blur-md text-purple-400 hover:bg-purple-500/10 flex items-center gap-2"
+                      bg-black/30 backdrop-blur-md text-purple-400 hover:bg-purple-500/10 
+                      flex items-center gap-2"
           >
             <Plus size={20} />
             <span>Create Agent</span>
           </button>
 
-          {/* Scanner Button */}
-          <button
-            onClick={() => setShowScanner(prev => !prev)}
-            className="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-black/30 
-                      backdrop-blur-md border border-purple-500/30 text-purple-400 
-                      hover:bg-purple-500/10 transition-colors flex items-center gap-2"
-          >
-            <AlertCircle size={20} />
-            <span>BOAI Scanning</span>
-          </button>
+          {/* Control Buttons */}
+          <div className="fixed bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4">
+            {/* Settings Button */}
+            <button
+              onClick={() => setShowSettings(true)}
+              className="px-6 py-3 bg-black/30 backdrop-blur-md border border-purple-500/30 
+                        text-purple-400 hover:bg-purple-500/10 transition-colors 
+                        flex items-center gap-2"
+            >
+              <Settings size={20} />
+              <span>Settings</span>
+            </button>
 
+            {/* Scanner Button */}
+            <button
+              onClick={() => setShowScanner((prev) => !prev)}
+              className="px-6 py-3 bg-black/30 backdrop-blur-md border border-purple-500/30 
+                        text-purple-400 hover:bg-purple-500/10 transition-colors 
+                        flex items-center gap-2"
+            >
+              <AlertCircle size={20} />
+              <span>BOAI Scanning</span>
+            </button>
+
+            {/* Connect Wallet Button */}
+            <button
+              onClick={() => (walletAddress ? setShowWalletPopup(true) : connectWallet())}
+              className="px-6 py-3 bg-black/30 backdrop-blur-md border border-purple-500/30 
+                        text-purple-400 hover:bg-purple-500/10 transition-colors 
+                        flex items-center gap-2"
+            >
+              <Wallet size={20} />
+              <span>
+                {walletAddress
+                  ? `${walletAddress.slice(0, 4)}...${walletAddress.slice(-4)}`
+                  : 'Connect Wallet'}
+              </span>
+            </button>
+          </div>
         </div>
 
         <TokenStats />
@@ -144,7 +228,7 @@ function App() {
         {/* Modals */}
         <div className="pointer-events-auto">
           {showMyAgents && (
-            <MyAgentsModal 
+            <MyAgentsModal
               isOpen={showMyAgents}
               onClose={() => {
                 console.log('Closing My Agents modal');
@@ -159,7 +243,7 @@ function App() {
           )}
 
           {showAgentCreation && (
-            <AgentCreationTool 
+            <AgentCreationTool
               onClose={() => setShowAgentCreation(false)}
               onCreated={() => {
                 console.log('Agent created');
@@ -169,18 +253,34 @@ function App() {
             />
           )}
 
-          {showScanner && <ScanningInterface onClose={() => setShowScanner(false)} />}
+          {showScanner && (
+            <ScanningInterface
+              onClose={() => setShowScanner(false)}
+              walletConnected={!!walletAddress}
+              showAlert={showAlert}
+            />
+          )}
+
+          {/* Wallet Popup */}
+          {showWalletPopup && walletAddress && (
+            <WalletPopup
+              walletAddress={walletAddress}
+              onDisconnect={disconnectWallet}
+              onClose={() => setShowWalletPopup(false)}
+            />
+          )}
         </div>
       </div>
 
       {/* Title Layer */}
       <div className="absolute top-0 left-0 right-0 z-20 pt-16">
         <div className="text-center">
-          <h1 className="text-8xl font-bold mb-2 text-white relative z-10 tracking-wider font-[Orbitron]
-                     drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
+          <h1
+            className="text-8xl font-bold mb-2 text-white relative z-10 tracking-wider font-[Orbitron]
+                     drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]"
+          >
             Book of AI
           </h1>
-          
           <p className="text-2xl font-[Quicksand] text-gray-200/90 tracking-widest">
             Unlock the secrets of artificial intelligence
           </p>
