@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'orbitron': ['Orbitron', 'sans-serif'],
+        'quicksand': ['Quicksand', 'sans-serif'],
+      },
       colors: {
         // You can add custom colors here if needed
       },

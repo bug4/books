@@ -140,12 +140,18 @@ function App() {
      </div>
 
      {/* Title Layer */}
-     <div className="absolute top-0 left-0 right-0 z-20 pt-8">
-       <div className="text-white text-center">
-         <h1 className="text-8xl font-bold mb-4">Book of AI</h1>
-         <p className="text-2xl">Unlock the secrets of artificial intelligence</p>
-       </div>
-     </div>
+<div className="absolute top-0 left-0 right-0 z-20 pt-16">
+  <div className="text-center">
+    <h1 className="text-8xl font-bold mb-2 text-white relative z-10 tracking-wider font-[Orbitron]
+                   drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
+      Book of AI
+    </h1>
+    
+    <p className="text-2xl font-[Quicksand] text-gray-200/90 tracking-widest">
+      Unlock the secrets of artificial intelligence
+    </p>
+  </div>
+</div>
    </div>
  );
 }
