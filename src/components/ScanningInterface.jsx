@@ -1,33 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { X, Sparkles, Copy, CheckCircle, Globe, Twitter, AlertCircle } from 'lucide-react';
+import { X, Sparkles, Copy, CheckCircle, Globe, Twitter } from 'lucide-react';
 
-const Alert = ({ message, onClose }) => {
- const [isVisible, setIsVisible] = useState(true);
-
- useEffect(() => {
-   const timer = setTimeout(() => {
-     setIsVisible(false);
-     onClose();
-   }, 3000);
-
-   return () => clearTimeout(timer);
- }, [onClose]);
-
- return (
-   <div className={`fixed top-8 left-8 z-[100] transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-     <div className="bg-black/30 backdrop-blur-md border border-purple-500/30 p-4 flex items-center gap-3">
-       <AlertCircle className="text-purple-400" size={20} />
-       <span className="text-purple-300">{message}</span>
-     </div>
-   </div>
- );
-};
-
-const TokenCard = ({ token, walletConnected }) => {
+const TokenCard = ({ token, walletConnected, showAlert }) => {
  const [copied, setCopied] = useState(false);
  const [metadata, setMetadata] = useState(null);
- const [showAlert, setShowAlert] = useState(false);
- const [alertMessage, setAlertMessage] = useState('');
 
  useEffect(() => {
    const fetchMetadata = async () => {
@@ -62,11 +38,9 @@ const TokenCard = ({ token, walletConnected }) => {
 
  const handleBuy = () => {
    if (!walletConnected) {
-     setAlertMessage('Please connect your wallet to perform trades');
-     setShowAlert(true);
+     showAlert('Please connect your wallet to perform trades');
    } else {
-     setAlertMessage('Trading is currently in beta testing and will be available in the next update');
-     setShowAlert(true);
+     showAlert('Trading is currently in beta testing and will be available in the next update');
    }
  };
 
@@ -132,7 +106,7 @@ const TokenCard = ({ token, walletConnected }) => {
                  </a>
                )}
                {metadata.website && (
-                <a 
+                 <a
                    href={metadata.website}
                    target="_blank"
                    rel="noopener noreferrer"
@@ -156,18 +130,11 @@ const TokenCard = ({ token, walletConnected }) => {
          )}
        </div>
      </div>
-
-     {showAlert && (
-       <Alert 
-         message={alertMessage} 
-         onClose={() => setShowAlert(false)} 
-       />
-     )}
    </div>
  );
 };
 
-const ScanningInterface = ({ onClose, walletConnected }) => {
+const ScanningInterface = ({ onClose, walletConnected, showAlert }) => {
  const [tokens, setTokens] = useState([]);
  const [isConnected, setIsConnected] = useState(false);
  const [isPaused, setIsPaused] = useState(false);
@@ -252,6 +219,7 @@ const ScanningInterface = ({ onClose, walletConnected }) => {
            key={token.mint + index} 
            token={token} 
            walletConnected={walletConnected}
+           showAlert={showAlert}
          />
        ))}
        {tokens.length === 0 && (
