@@ -10,8 +10,8 @@ const TokenStats = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showCopyTooltip, setShowCopyTooltip] = useState(false);
 
-  const isLaunched = false; // Set to true when launching
-  const TOKEN_ADDRESS = isLaunched ? "GwceCeRWj6NGMQMLmYPdETQqhLmgqHWzZELcU9xhpump" : null;
+  const isLaunched = true; // Set to true when launching
+  const TOKEN_ADDRESS = isLaunched ? "8vbLy23ySEKcsEf6fcQMYFozKEKrrnFp8iP7r5kMpump" : null;
   const TOTAL_SUPPLY = 1000000000; // 1 billion fixed supply
 
   useEffect(() => {
