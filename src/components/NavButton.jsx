@@ -1,4 +1,3 @@
-// components/NavButton.jsx
 import React from 'react';
 import { Bot } from 'lucide-react';
 
@@ -23,7 +22,7 @@ const NavButton = ({ onClick }) => {
                  flex items-center gap-2 cursor-pointer"
       >
         <Bot size={20} />
-        <span>My Agents</span>
+        <span>Librarium Agents</span>
       </button>
     </div>
   );

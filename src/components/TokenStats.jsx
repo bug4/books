@@ -10,8 +10,8 @@ const TokenStats = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showCopyTooltip, setShowCopyTooltip] = useState(false);
 
-  const isLaunched = true; // Set to true when launching
-  const TOKEN_ADDRESS = isLaunched ? "8vbLy23ySEKcsEf6fcQMYFozKEKrrnFp8iP7r5kMpump" : null;
+  const isLaunched = false; // Set to true when launching
+  const TOKEN_ADDRESS = isLaunched ? "soon" : null;
   const TOTAL_SUPPLY = 1000000000; // 1 billion fixed supply
 
   useEffect(() => {
@@ -74,7 +74,7 @@ const TokenStats = () => {
       <div className="border-b border-purple-500/30 bg-purple-900/20 p-2 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <BookOpen className="w-4 h-4 text-purple-400" />
-          <span className="text-purple-400 text-sm font-semibold">$BOAI Stats</span>
+          <span className="text-purple-400 text-sm font-semibold">$LIB Stats</span>
         </div>
       </div>
 
@@ -149,9 +149,9 @@ const TokenStats = () => {
 
         {/* Token Description */}
         <div className="p-2 bg-purple-500/5 border border-purple-500/20">
-          <div className="text-purple-400 text-xs mb-2">About $BOAI</div>
+          <div className="text-purple-400 text-xs mb-2">About $LIB</div>
           <p className="text-purple-300 text-xs leading-relaxed">
-            Book of AI ($BOAI) is the gateway token to ancient AI wisdom. 
+            Librarium ($LIB) is the gateway token to ancient wisdom and AI knowledge. 
             It powers our decentralized knowledge network and grants holders 
             access to advanced AI capabilities while allowing them to 
             participate in the governance of the protocol.

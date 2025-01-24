@@ -3,10 +3,10 @@ import { BookOpen, Loader, Sparkles, Code, Cpu, Binary } from 'lucide-react';
 
 function LoadingScreen({ onStartClick, isSplineLoaded }) {
   const messages = [
-    "Decoding ancient algorithms...",
+    "Accessing ancient knowledge...",
     "Initializing neural networks...",
-    "Connecting to the digital realm...",
-    "Synthesizing knowledge matrices...",
+    "Connecting to the Librarium...",
+    "Synthesizing wisdom matrices...",
     "Calibrating quantum processors...",
     "Harmonizing AI frequencies..."
   ];
@@ -17,14 +17,11 @@ function LoadingScreen({ onStartClick, isSplineLoaded }) {
     let intervalId;
 
     if (!isSplineLoaded) {
-      // Rotate messages every 2 seconds if spline is still loading
       intervalId = setInterval(() => {
         setMessage(messages[Math.floor(Math.random() * messages.length)]);
       }, 2000);
     } else {
-      // Once spline is loaded, stop rotating messages
-      // and show a final "System loaded" message
-      setMessage("System loaded! Click the button to continue...");
+      setMessage("Librarium loaded! Click to enter...");
     }
 
     return () => {
@@ -57,7 +54,7 @@ function LoadingScreen({ onStartClick, isSplineLoaded }) {
         </div>
 
         <div className="space-y-4 text-center">
-          <h2 className="text-4xl font-bold text-purple-400 tracking-wider">Book of AI</h2>
+          <h2 className="text-4xl font-bold text-purple-400 tracking-wider">Librarium</h2>
           <div className="flex items-center gap-3 justify-center">
             <Loader className="w-5 h-5 text-purple-500 animate-spin" />
             <p className="text-purple-300 text-lg">Awakening ancient wisdom...</p>
@@ -82,7 +79,7 @@ function LoadingScreen({ onStartClick, isSplineLoaded }) {
                      hover:bg-purple-500/20 transition-all duration-300 ease-in-out
                      flex items-center gap-2 group animate-fade-in"
           >
-            <span>Enter the Realm</span>
+            <span>Enter the Librarium</span>
             <Sparkles className="w-4 h-4 group-hover:scale-110 transition-transform" />
           </button>
         )}

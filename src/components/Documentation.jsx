@@ -1,4 +1,3 @@
-// components/Documentation.jsx
 import React from 'react';
 import { Book, Bot, AlertCircle, Wallet, GitGraph, Brain } from 'lucide-react';
 
@@ -6,14 +5,12 @@ const Documentation = ({ onClose }) => {
   return (
     <div className="fixed inset-0 overflow-y-auto bg-black/95 backdrop-blur-md z-[100]">
       <div className="max-w-4xl mx-auto p-8 relative">
-        
         {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-purple-300 hover:text-purple-400"
           aria-label="Close Documentation"
         >
-          {/* You can use an X icon, or any icon/text you prefer */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -29,10 +26,10 @@ const Documentation = ({ onClose }) => {
         {/* Header */}
         <div className="border-b border-purple-500/30 mb-8 pb-8">
           <h1 className="text-4xl font-bold text-white mb-4">
-            Book of AI Documentation
+            Librarium Documentation
           </h1>
           <p className="text-purple-300">
-            A comprehensive guide to the Book of AI platform and its features.
+            A comprehensive guide to the Librarium platform and its features.
           </p>
         </div>
 
@@ -44,7 +41,7 @@ const Documentation = ({ onClose }) => {
               Introduction
             </h2>
             <p className="text-purple-300/90 leading-relaxed">
-              Book of AI is a decentralized platform that combines artificial
+              Librarium is a decentralized platform that combines artificial
               intelligence with blockchain technology. Our platform offers AI
               agents, real-time token scanning, and integrated trading
               capabilities.
@@ -70,11 +67,11 @@ const Documentation = ({ onClose }) => {
                 </p>
               </div>
 
-              {/* BOAI Scanner */}
+              {/* LIB Scanner */}
               <div className="p-4 border border-purple-500/30 bg-purple-500/5">
                 <div className="flex items-center gap-3 mb-3">
                   <AlertCircle className="text-purple-400" size={24} />
-                  <h3 className="text-xl text-purple-300">BOAI Scanner</h3>
+                  <h3 className="text-xl text-purple-300">LIB Scanner</h3>
                 </div>
                 <p className="text-purple-300/80">
                   Real-time monitoring of new token launches on the Solana
@@ -140,7 +137,7 @@ const Documentation = ({ onClose }) => {
                   3. Start Scanning
                 </h3>
                 <p className="text-purple-300/80">
-                  Access the BOAI Scanner to monitor new token launches and
+                  Access the LIB Scanner to monitor new token launches and
                   perform real-time analysis.
                 </p>
               </div>

@@ -5,7 +5,6 @@ const MyAgents = ({ onSelectAgent }) => {
   const [agents, setAgents] = React.useState([]);
 
   React.useEffect(() => {
-    // Load agents from localStorage
     const savedAgents = JSON.parse(localStorage.getItem('myAgents') || '[]');
     setAgents(savedAgents);
   }, []);
@@ -18,7 +17,7 @@ const MyAgents = ({ onSelectAgent }) => {
     <div className="absolute left-8 bottom-8 w-80 bg-black/30 backdrop-blur-md border border-purple-500/30">
       <div className="p-3 border-b border-purple-500/30 bg-purple-900/20 flex items-center gap-2">
         <Users className="w-4 h-4 text-purple-400" />
-        <span className="text-purple-400 text-sm">My Agents</span>
+        <span className="text-purple-400 text-sm">Librarium Agents</span>
       </div>
       <div className="max-h-48 overflow-y-auto">
         {agents.map((agent, index) => (

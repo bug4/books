@@ -17,7 +17,6 @@ const MyAgentsModal = ({ isOpen, onClose, onSelectAgent }) => {
     }
   }, [isOpen]);
 
-  // If not open, don't render anything
   if (!isOpen) return null;
 
   return (
@@ -25,7 +24,7 @@ const MyAgentsModal = ({ isOpen, onClose, onSelectAgent }) => {
     onClick={(e) => e.stopPropagation()}>
       <div className="w-[600px] bg-black/80 border border-purple-500/30">
         <div className="p-4 border-b border-purple-500/30 bg-purple-900/20 flex justify-between items-center">
-          <h2 className="text-purple-400 text-xl">My AI Agents</h2>
+          <h2 className="text-purple-400 text-xl">Librarium Agents</h2>
           <button 
             onClick={onClose}
             className="text-purple-400 hover:text-purple-300"
@@ -37,7 +36,7 @@ const MyAgentsModal = ({ isOpen, onClose, onSelectAgent }) => {
         <div className="max-h-[60vh] overflow-y-auto">
           {agents.length === 0 ? (
             <div className="p-8 text-center text-purple-400/60">
-              No agents created yet. Create your first AI agent!
+              No agents created yet. Create your first Librarium agent!
             </div>
           ) : (
             <div className="p-4 grid gap-4">

@@ -189,7 +189,7 @@ const ScanningInterface = ({ onClose, walletConnected, showAlert }) => {
      <div className="border-b border-purple-500/30 bg-purple-900/20 p-3 flex justify-between items-center">
        <div className="text-purple-400 text-sm font-semibold flex items-center gap-2">
          <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-red-500'}`} />
-         BOAI Scanner
+         LIB Scanner
          {isPaused && <span className="text-purple-400/60 text-xs">(Paused)</span>}
        </div>
        <button onClick={onClose} className="text-purple-400 hover:text-purple-300">

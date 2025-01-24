@@ -78,24 +78,24 @@ const ChatInterface = ({ currentAgent, onButtonClick }) => {
   return (
     <div className="absolute left-8 top-1/2 -translate-y-1/2 w-80 h-[600px] bg-black/30 backdrop-blur-md border border-purple-500/30">
       {/* Header */}
-<div className="border-b border-purple-500/30 bg-purple-900/20 p-3">
-  <button
-    onClick={onButtonClick}
-    className="w-full flex items-center justify-between px-3 py-2 
-               border border-purple-500/30 bg-black/20 
-               text-purple-400 hover:bg-purple-500/10 transition-all
-               group cursor-pointer"
-  >
-    <div className="flex items-center gap-2">
-      <Bot size={20} />
-      <span>My Agents</span>
-    </div>
-    <div className="text-xs text-purple-500/50">Click to view agents</div>
-  </button>
-  <div className="text-purple-400/60 text-sm mt-2">
-    {currentAgent ? `Chatting with ${currentAgent.name}` : 'Book of AI Oracle'}
-  </div>
-</div>
+      <div className="border-b border-purple-500/30 bg-purple-900/20 p-3">
+        <button
+          onClick={onButtonClick}
+          className="w-full flex items-center justify-between px-3 py-2 
+                   border border-purple-500/30 bg-black/20 
+                   text-purple-400 hover:bg-purple-500/10 transition-all
+                   group cursor-pointer"
+        >
+          <div className="flex items-center gap-2">
+            <Bot size={20} />
+            <span>Librarium Agents</span>
+          </div>
+          <div className="text-xs text-purple-500/50">Click to view agents</div>
+        </button>
+        <div className="text-purple-400/60 text-sm mt-2">
+          {currentAgent ? `Chatting with ${currentAgent.name}` : 'Librarium Oracle'}
+        </div>
+      </div>
 
       {/* Messages */}
       <div className="h-[480px] overflow-y-auto p-4 space-y-4">
@@ -135,7 +135,7 @@ const ChatInterface = ({ currentAgent, onButtonClick }) => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={currentAgent ? `Chat with ${currentAgent.name}...` : "Ask the ancient wisdom..."}
-            className="flex-1 bg-black/30 border border-purple-500/30 p-2 text-purple-200 placeholder-purple-400/50 focus:outline-none focus:border-purple-500"
+            className="flex-1 bg-black/30 border border-purple-500/30 p-2 text-purple-200 placeholder-purple-400/50 focus:outline-none focus -border-purple-500"
           />
           <button
             type="submit"
