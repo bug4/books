@@ -1,5 +1,5 @@
 import React from 'react';
-import { Book, Bot, AlertCircle, Wallet, GitGraph, Brain } from 'lucide-react';
+import { Crown, Eye, Wallet, Sparkles, Star } from 'lucide-react';
 
 const Documentation = ({ onClose }) => {
   return (
@@ -26,10 +26,10 @@ const Documentation = ({ onClose }) => {
         {/* Header */}
         <div className="border-b border-purple-500/30 mb-8 pb-8">
           <h1 className="text-4xl font-bold text-white mb-4">
-            Librarium Documentation
+            The Book of Heaven Documentation
           </h1>
-          <p className="text-purple-300">
-            A comprehensive guide to the Librarium platform and its features.
+          <p className="text-gold-300">
+            A comprehensive guide to The Book of Heaven platform and its divine features.
           </p>
         </div>
 
@@ -40,11 +40,11 @@ const Documentation = ({ onClose }) => {
             <h2 className="text-2xl text-purple-400 font-semibold mb-4">
               Introduction
             </h2>
-            <p className="text-purple-300/90 leading-relaxed">
-              Librarium is a decentralized platform that combines artificial
-              intelligence with blockchain technology. Our platform offers AI
-              agents, real-time token scanning, and integrated trading
-              capabilities.
+            <p className="text-gold-300/90 leading-relaxed">
+              The Book of Heaven is a sacred platform that bridges the celestial and digital realms, 
+              combining divine artificial intelligence with blockchain technology. Our platform offers 
+              divine seraphs, heavenly vision scanning, and sacred trading capabilities that reveal 
+              the secrets of heaven to those worthy of divine knowledge.
             </p>
           </section>
 
@@ -54,55 +54,55 @@ const Documentation = ({ onClose }) => {
               Core Features
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* AI Agents */}
-              <div className="p-4 border border-purple-500/30 bg-purple-500/5">
+              {/* Divine Seraphs */}
+              <div className="p-4 border border-gold-500/30 bg-gold-500/5">
                 <div className="flex items-center gap-3 mb-3">
-                  <Bot className="text-purple-400" size={24} />
-                  <h3 className="text-xl text-purple-300">AI Agents</h3>
+                  <Crown className="text-gold-400" size={24} />
+                  <h3 className="text-xl text-gold-300">Divine Seraphs</h3>
                 </div>
-                <p className="text-purple-300/80">
-                  Create and customize AI agents with specific traits, expertise,
-                  and communication styles. Each agent can be tailored for
-                  different purposes, from technical analysis to market research.
+                <p className="text-gold-300/80">
+                  Summon and customize divine seraphs with celestial traits, heavenly expertise,
+                  and sacred communication styles. Each seraph can be tailored for
+                  different divine purposes, from prophetic analysis to heavenly guidance.
                 </p>
               </div>
 
-              {/* LIB Scanner */}
-              <div className="p-4 border border-purple-500/30 bg-purple-500/5">
+              {/* Divine Vision */}
+              <div className="p-4 border border-gold-500/30 bg-gold-500/5">
                 <div className="flex items-center gap-3 mb-3">
-                  <AlertCircle className="text-purple-400" size={24} />
-                  <h3 className="text-xl text-purple-300">LIB Scanner</h3>
+                  <Eye className="text-gold-400" size={24} />
+                  <h3 className="text-xl text-gold-300">Divine Vision</h3>
                 </div>
-                <p className="text-purple-300/80">
-                  Real-time monitoring of new token launches on the Solana
-                  blockchain. View detailed token information, social links, and
-                  trading capabilities.
+                <p className="text-gold-300/80">
+                  Real-time divine monitoring of new token manifestations on the Solana
+                  blockchain. Receive heavenly insights, sacred token information, and
+                  divine trading revelations.
                 </p>
               </div>
 
               {/* Wallet Integration */}
-              <div className="p-4 border border-purple-500/30 bg-purple-500/5">
+              <div className="p-4 border border-gold-500/30 bg-gold-500/5">
                 <div className="flex items-center gap-3 mb-3">
-                  <Wallet className="text-purple-400" size={24} />
-                  <h3 className="text-xl text-purple-300">Wallet Integration</h3>
+                  <Wallet className="text-gold-400" size={24} />
+                  <h3 className="text-xl text-gold-300">Sacred Wallet Integration</h3>
                 </div>
-                <p className="text-purple-300/80">
-                  Seamless integration with Phantom wallet for secure
-                  transactions and token interactions. Connect and disconnect with
-                  ease.
+                <p className="text-gold-300/80">
+                  Sacred integration with Phantom wallet for divine
+                  transactions and celestial token interactions. Connect to the heavenly
+                  realm with divine protection and ease.
                 </p>
               </div>
 
-              {/* AI Analysis */}
-              <div className="p-4 border border-purple-500/30 bg-purple-500/5">
+              {/* Divine Analysis */}
+              <div className="p-4 border border-gold-500/30 bg-gold-500/5">
                 <div className="flex items-center gap-3 mb-3">
-                  <Brain className="text-purple-400" size={24} />
-                  <h3 className="text-xl text-purple-300">AI Analysis</h3>
+                  <Sparkles className="text-gold-400" size={24} />
+                  <h3 className="text-xl text-gold-300">Divine Analysis</h3>
                 </div>
-                <p className="text-purple-300/80">
-                  Advanced AI-powered analysis of market trends and token
-                  potential. Receive insights and predictions based on real-time
-                  data.
+                <p className="text-gold-300/80">
+                  Advanced heaven-powered analysis of celestial market trends and token
+                  divine potential. Receive prophetic insights and heavenly predictions based on 
+                  real-time divine revelations.
                 </p>
               </div>
             </div>
@@ -111,34 +111,34 @@ const Documentation = ({ onClose }) => {
           {/* Getting Started */}
           <section>
             <h2 className="text-2xl text-purple-400 font-semibold mb-4">
-              Getting Started
+              Beginning Your Divine Journey
             </h2>
             <div className="space-y-4">
-              <div className="p-4 border border-purple-500/30 bg-purple-500/5">
-                <h3 className="text-xl text-purple-300 mb-2">
-                  1. Connect Your Wallet
+              <div className="p-4 border border-gold-500/30 bg-gold-500/5">
+                <h3 className="text-xl text-gold-300 mb-2">
+                  1. Connect Your Sacred Wallet
                 </h3>
-                <p className="text-purple-300/80">
+                <p className="text-gold-300/80">
                   Click the "Connect Wallet" button in the bottom navigation bar
-                  to connect your Phantom wallet.
+                  to connect your Phantom wallet to the divine realm.
                 </p>
               </div>
-              <div className="p-4 border border-purple-500/30 bg-purple-500/5">
-                <h3 className="text-xl text-purple-300 mb-2">
-                  2. Create an AI Agent
+              <div className="p-4 border border-gold-500/30 bg-gold-500/5">
+                <h3 className="text-xl text-gold-300 mb-2">
+                  2. Summon a Divine Seraph
                 </h3>
-                <p className="text-purple-300/80">
-                  Use the "Create Agent" button to customize your own AI
-                  assistant with specific traits and expertise.
+                <p className="text-gold-300/80">
+                  Use the "Summon Seraph" button to customize your own divine
+                  messenger with specific celestial traits and heavenly expertise.
                 </p>
               </div>
-              <div className="p-4 border border-purple-500/30 bg-purple-500/5">
-                <h3 className="text-xl text-purple-300 mb-2">
-                  3. Start Scanning
+              <div className="p-4 border border-gold-500/30 bg-gold-500/5">
+                <h3 className="text-xl text-gold-300 mb-2">
+                  3. Activate Divine Vision
                 </h3>
-                <p className="text-purple-300/80">
-                  Access the LIB Scanner to monitor new token launches and
-                  perform real-time analysis.
+                <p className="text-gold-300/80">
+                  Access the Divine Vision to monitor new token manifestations and
+                  receive real-time heavenly revelations.
                 </p>
               </div>
             </div>
@@ -147,14 +147,14 @@ const Documentation = ({ onClose }) => {
           {/* Upcoming Features */}
           <section>
             <h2 className="text-2xl text-purple-400 font-semibold mb-4">
-              Upcoming Features
+              Upcoming Divine Revelations
             </h2>
-            <div className="p-4 border border-purple-500/30 bg-purple-500/5">
-              <ul className="list-disc list-inside space-y-2 text-purple-300/80">
-                <li>Advanced trading integration</li>
-                <li>Enhanced AI analysis capabilities</li>
-                <li>Multi-chain support</li>
-                <li>Social features and community tools</li>
+            <div className="p-4 border border-gold-500/30 bg-gold-500/5">
+              <ul className="list-disc list-inside space-y-2 text-gold-300/80">
+                <li>Advanced sacred trading integration</li>
+                <li>Enhanced divine analysis capabilities</li>
+                <li>Multi-realm blockchain support</li>
+                <li>Celestial community and heavenly fellowship tools</li>
               </ul>
             </div>
           </section>
