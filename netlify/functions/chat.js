@@ -1,10 +1,8 @@
-import { Configuration, OpenAIApi } from 'openai';
+import OpenAI from 'openai';
 
-const configuration = new Configuration({
+const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
-
-const openai = new OpenAIApi(configuration);
 
 export const handler = async (event) => {
   try {
@@ -14,7 +12,7 @@ export const handler = async (event) => {
 
     const { messages } = JSON.parse(event.body);
 
-    const completion = await openai.createChatCompletion({
+    const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: messages,
       temperature: 0.7,
@@ -26,9 +24,11 @@ export const handler = async (event) => {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
       },
       body: JSON.stringify({
-        message: completion.data.choices[0].message,
+        message: completion.choices[0].message,
       }),
     };
   } catch (error) {
@@ -36,8 +36,13 @@ export const handler = async (event) => {
 
     return {
       statusCode: 500,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
       body: JSON.stringify({
         error: 'An error occurred while processing your request',
+        details: error.message,
       }),
     };
   }
