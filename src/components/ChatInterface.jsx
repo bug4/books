@@ -103,8 +103,8 @@ const ChatInterface = ({ currentSeraph, onButtonClick }) => {
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`flex ${
-              message.role === 'user' ? 'justify-end' : 'justify-start'
+                ? 'bg-gold-500/20 text-gold-200'
+                : 'bg-gold-900/20 text-gold-300'
             }`}
           >
             <div

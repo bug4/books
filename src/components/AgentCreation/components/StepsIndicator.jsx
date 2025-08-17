@@ -14,10 +14,10 @@ const StepsIndicator = ({ currentStep, totalSteps }) => {
             <div 
               className={`w-8 h-8 rounded-full flex items-center justify-center border-2 
                 ${currentStep > index + 1 
-                  ? 'bg-purple-500 border-purple-500' 
+                  ? 'bg-gold-500 border-gold-500' 
                   : currentStep === index + 1
-                  ? 'border-purple-500 text-purple-500' 
-                  : 'border-purple-500/30 text-purple-500/30'
+                  ? 'border-gold-500 text-gold-500' 
+                  : 'border-gold-500/30 text-gold-500/30'
                 }`}
             >
               {index + 1}
@@ -26,8 +26,8 @@ const StepsIndicator = ({ currentStep, totalSteps }) => {
               <div 
                 className={`flex-1 h-0.5 mx-2 ${
                   currentStep > index + 1 
-                    ? 'bg-purple-500' 
-                    : 'bg-purple-500/30'
+                    ? 'bg-gold-500' 
+                    : 'bg-gold-500/30'
                 }`}
               />
             )}
