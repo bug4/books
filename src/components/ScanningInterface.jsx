@@ -45,7 +45,7 @@ const TokenCard = ({ token, walletConnected, showAlert }) => {
  };
 
  return (
-   <div className="p-4 border-b border-purple-500/10 hover:bg-purple-500/5">
+   <div className="p-4 border-b border-gold-500/10 hover:bg-gold-500/5">
      <div className="flex items-center gap-4">
        {/* Token Image/Symbol */}
        {metadata?.image ? (
@@ -54,13 +54,13 @@ const TokenCard = ({ token, walletConnected, showAlert }) => {
              ? metadata.image.replace('ipfs://', 'https://ipfs.io/ipfs/')
              : metadata.image}
            alt={token.name}
-           className="w-10 h-10 rounded-full object-cover border border-purple-500/30"
+           className="w-10 h-10 rounded-full object-cover border border-gold-500/30"
            onError={() => {
              setMetadata(prev => prev ? { ...prev, image: undefined } : null);
            }}
          />
        ) : (
-         <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
+         <div className="w-10 h-10 rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400">
            {token.symbol?.charAt(0)}
          </div>
        )}
@@ -69,17 +69,17 @@ const TokenCard = ({ token, walletConnected, showAlert }) => {
        <div className="flex-1">
          <div className="flex justify-between items-start">
            <div>
-             <div className="text-purple-300 font-medium">{token.name}</div>
-             <div className="text-purple-400/60 text-sm">{token.symbol}</div>
+             <div className="text-gold-300 font-medium">{token.name}</div>
+             <div className="text-gold-400/60 text-sm">{token.symbol}</div>
            </div>
-           <div className="text-purple-400/60 text-xs">
+           <div className="text-gold-400/60 text-xs">
              {new Date(token.timestamp).toLocaleTimeString()}
            </div>
          </div>
 
          {/* Contract Address */}
          <div className="flex items-center gap-2 mt-2">
-           <div className="text-purple-400/40 text-xs truncate flex-1">
+           <div className="text-gold-400/40 text-xs truncate flex-1">
              {token.mint}
            </div>
            <button
@@ -101,7 +101,7 @@ const TokenCard = ({ token, walletConnected, showAlert }) => {
                    href={metadata.twitter}
                    target="_blank"
                    rel="noopener noreferrer"
-                   className="text-purple-400 hover:text-purple-300"
+                   className="text-gold-400 hover:text-gold-300"
                  >
                    <Twitter size={16} />
                  </a>
@@ -111,7 +111,7 @@ const TokenCard = ({ token, walletConnected, showAlert }) => {
                    href={metadata.website}
                    target="_blank"
                    rel="noopener noreferrer"
-                   className="text-purple-400 hover:text-purple-300"
+                   className="text-gold-400 hover:text-gold-300"
                  >
                    <Globe size={16} />
                  </a>
@@ -121,8 +121,8 @@ const TokenCard = ({ token, walletConnected, showAlert }) => {
              {/* Buy Button */}
              <button
                onClick={handleBuy}
-               className="px-4 py-1.5 bg-purple-500/10 border border-purple-500/30 
-                        text-purple-400 hover:bg-purple-500/20 transition-colors 
+               className="px-4 py-1.5 bg-gold-500/10 border border-gold-500/30 
+                        text-gold-400 hover:bg-gold-500/20 transition-colors 
                         flex items-center gap-2 text-sm"
              >
                Buy

@@ -8,7 +8,7 @@ const Documentation = ({ onClose }) => {
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-purple-300 hover:text-purple-400"
+          className="absolute top-4 right-4 text-gold-300 hover:text-gold-400"
           aria-label="Close Documentation"
         >
           <svg
@@ -24,7 +24,7 @@ const Documentation = ({ onClose }) => {
         </button>
 
         {/* Header */}
-        <div className="border-b border-purple-500/30 mb-8 pb-8">
+        <div className="border-b border-gold-500/30 mb-8 pb-8">
           <h1 className="text-4xl font-bold text-white mb-4">
             The Book of Heaven Documentation
           </h1>
@@ -38,7 +38,8 @@ const Documentation = ({ onClose }) => {
           {/* Introduction */}
           <section>
             <h2 className="text-2xl text-purple-400 font-semibold mb-4">
-              Introduction
+              <h2 className="text-2xl text-gold-400 font-semibold mb-4">
+                Introduction
             </h2>
             <p className="text-gold-300/90 leading-relaxed">
               The Book of Heaven is a sacred platform that bridges the celestial and digital realms, 
@@ -51,6 +52,7 @@ const Documentation = ({ onClose }) => {
           {/* Core Features */}
           <section>
             <h2 className="text-2xl text-purple-400 font-semibold mb-4">
+            <h2 className="text-2xl text-gold-400 font-semibold mb-4">
               Core Features
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -111,6 +113,7 @@ const Documentation = ({ onClose }) => {
           {/* Getting Started */}
           <section>
             <h2 className="text-2xl text-purple-400 font-semibold mb-4">
+            <h2 className="text-2xl text-gold-400 font-semibold mb-4">
               Beginning Your Divine Journey
             </h2>
             <div className="space-y-4">
@@ -147,6 +150,7 @@ const Documentation = ({ onClose }) => {
           {/* Upcoming Features */}
           <section>
             <h2 className="text-2xl text-purple-400 font-semibold mb-4">
+            <h2 className="text-2xl text-gold-400 font-semibold mb-4">
               Upcoming Divine Revelations
             </h2>
             <div className="p-4 border border-gold-500/30 bg-gold-500/5">
