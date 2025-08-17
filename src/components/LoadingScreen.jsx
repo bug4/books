@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { BookOpen, Loader, Sparkles, Code, Cpu, Binary } from 'lucide-react';
+import { Crown, Loader, Eye, Sparkles, Star, Zap } from 'lucide-react';
 
 function LoadingScreen({ onStartClick, isSplineLoaded }) {
   const messages = [
-    "Accessing ancient knowledge...",
-    "Initializing neural networks...",
-    "Connecting to the Librarium...",
-    "Synthesizing wisdom matrices...",
-    "Calibrating quantum processors...",
-    "Harmonizing AI frequencies..."
+    "Opening the sacred seals...",
+    "Awakening divine seraphs...",
+    "Connecting to celestial realms...",
+    "Channeling heavenly wisdom...",
+    "Aligning with divine frequencies...",
+    "Preparing sacred revelations..."
   ];
   
   const [message, setMessage] = useState(messages[0]);
@@ -21,7 +21,7 @@ function LoadingScreen({ onStartClick, isSplineLoaded }) {
         setMessage(messages[Math.floor(Math.random() * messages.length)]);
       }, 2000);
     } else {
-      setMessage("Librarium loaded! Click to enter...");
+      setMessage("The Book of Heaven awaits! Click to enter...");
     }
 
     return () => {
@@ -32,16 +32,16 @@ function LoadingScreen({ onStartClick, isSplineLoaded }) {
   return (
     <div className="fixed inset-0 bg-black z-[100] flex flex-col items-center justify-center">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-purple-900/10 to-black pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(93,38,193,0.1),transparent_100%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-gold-900/10 to-black pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,215,0,0.1),transparent_100%)]" />
       
       {/* Animated Particles */}
       <div className="absolute top-0 left-0 right-0 bottom-0 overflow-hidden opacity-20">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <Binary className="w-6 h-6 text-purple-500 absolute animate-float" style={{ left: '30%', top: '20%' }} />
-          <Cpu className="w-6 h-6 text-purple-400 absolute animate-float-delayed" style={{ right: '25%', top: '40%' }} />
-          <Code className="w-6 h-6 text-purple-300 absolute animate-float" style={{ left: '40%', bottom: '30%' }} />
-          <Sparkles className="w-6 h-6 text-purple-600 absolute animate-float-delayed" style={{ right: '35%', bottom: '40%' }} />
+          <Star className="w-6 h-6 text-gold-500 absolute animate-float" style={{ left: '30%', top: '20%' }} />
+          <Eye className="w-6 h-6 text-gold-400 absolute animate-float-delayed" style={{ right: '25%', top: '40%' }} />
+          <Zap className="w-6 h-6 text-gold-300 absolute animate-float" style={{ left: '40%', bottom: '30%' }} />
+          <Sparkles className="w-6 h-6 text-gold-600 absolute animate-float-delayed" style={{ right: '35%', bottom: '40%' }} />
         </div>
       </div>
 
@@ -49,25 +49,25 @@ function LoadingScreen({ onStartClick, isSplineLoaded }) {
       <div className="relative z-10 flex flex-col items-center justify-center p-8 space-y-8">
         {/* Logo and Title */}
         <div className="relative">
-          <div className="absolute inset-0 animate-pulse-slow bg-purple-500/20 blur-xl rounded-full" />
-          <BookOpen className="w-20 h-20 text-purple-400 relative z-10" />
+          <div className="absolute inset-0 animate-pulse-slow bg-gold-500/20 blur-xl rounded-full" />
+          <Crown className="w-20 h-20 text-gold-400 relative z-10" />
         </div>
 
         <div className="space-y-4 text-center">
-          <h2 className="text-4xl font-bold text-purple-400 tracking-wider">Librarium</h2>
+          <h2 className="text-4xl font-bold text-gold-400 tracking-wider">The Book of Heaven</h2>
           <div className="flex items-center gap-3 justify-center">
-            <Loader className="w-5 h-5 text-purple-500 animate-spin" />
-            <p className="text-purple-300 text-lg">Awakening ancient wisdom...</p>
+            <Loader className="w-5 h-5 text-gold-500 animate-spin" />
+            <p className="text-gold-300 text-lg">Awakening divine wisdom...</p>
           </div>
         </div>
 
         {/* Loading Progress Bar */}
-        <div className="w-64 h-1 bg-purple-900/30 rounded-full overflow-hidden">
-          <div className="h-full bg-purple-500/50 animate-progress rounded-full" />
+        <div className="w-64 h-1 bg-gold-900/30 rounded-full overflow-hidden">
+          <div className="h-full bg-gold-500/50 animate-progress rounded-full" />
         </div>
 
         {/* Random (or Final) Loading Message */}
-        <div className="text-purple-400/60 text-sm text-center h-6">
+        <div className="text-gold-400/60 text-sm text-center h-6">
           <div className="animate-fade-in">{message}</div>
         </div>
 
@@ -75,11 +75,11 @@ function LoadingScreen({ onStartClick, isSplineLoaded }) {
         {isSplineLoaded && (
           <button
             onClick={onStartClick}
-            className="mt-8 px-8 py-3 bg-purple-500/10 border border-purple-500/50 text-purple-400 
-                     hover:bg-purple-500/20 transition-all duration-300 ease-in-out
+            className="mt-8 px-8 py-3 bg-gold-500/10 border border-gold-500/50 text-gold-400 
+                     hover:bg-gold-500/20 transition-all duration-300 ease-in-out
                      flex items-center gap-2 group animate-fade-in"
           >
-            <span>Enter the Librarium</span>
+            <span>Enter the Sacred Realm</span>
             <Sparkles className="w-4 h-4 group-hover:scale-110 transition-transform" />
           </button>
         )}

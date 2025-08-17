@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Sparkles, Copy, CheckCircle, Globe, Twitter } from 'lucide-react';
+import { X, Eye, Copy, CheckCircle, Globe, Twitter } from 'lucide-react';
 
 const TokenCard = ({ token, walletConnected, showAlert }) => {
  const [copied, setCopied] = useState(false);
@@ -184,27 +184,27 @@ const ScanningInterface = ({ onClose, walletConnected, showAlert }) => {
  }, [isPaused]);
 
  return (
-   <div className="fixed bottom-20 left-1/2 -translate-x-1/2 w-[800px] bg-black/30 backdrop-blur-md border border-purple-500/30">
+   <div className="fixed bottom-20 left-1/2 -translate-x-1/2 w-[800px] bg-black/30 backdrop-blur-md border border-gold-500/30">
      {/* Header */}
-     <div className="border-b border-purple-500/30 bg-purple-900/20 p-3 flex justify-between items-center">
-       <div className="text-purple-400 text-sm font-semibold flex items-center gap-2">
+     <div className="border-b border-gold-500/30 bg-gold-900/20 p-3 flex justify-between items-center">
+       <div className="text-gold-400 text-sm font-semibold flex items-center gap-2">
          <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-red-500'}`} />
-         LIB Scanner
-         {isPaused && <span className="text-purple-400/60 text-xs">(Paused)</span>}
+         Divine Vision
+         {isPaused && <span className="text-gold-400/60 text-xs">(Paused)</span>}
        </div>
-       <button onClick={onClose} className="text-purple-400 hover:text-purple-300">
+       <button onClick={onClose} className="text-gold-400 hover:text-gold-300">
          <X size={18} />
        </button>
      </div>
 
-     {/* Potential Runner Box */}
-     <div className="p-3 border-b border-purple-500/30">
-       <div className="flex items-center gap-2 text-purple-400 text-sm mb-2">
-         <Sparkles size={16} />
-         <span>Potential Runner</span>
+     {/* Divine Revelation Box */}
+     <div className="p-3 border-b border-gold-500/30">
+       <div className="flex items-center gap-2 text-gold-400 text-sm mb-2">
+         <Eye size={16} />
+         <span>Divine Revelation</span>
        </div>
-       <div className="bg-purple-500/10 p-3 text-purple-300 text-sm">
-         AI analysis coming soon...
+       <div className="bg-gold-500/10 p-3 text-gold-300 text-sm">
+         Heavenly insights coming soon...
        </div>
      </div>
 
@@ -223,8 +223,8 @@ const ScanningInterface = ({ onClose, walletConnected, showAlert }) => {
          />
        ))}
        {tokens.length === 0 && (
-         <div className="text-center text-purple-400/60 p-4">
-           Waiting for new tokens...
+         <div className="text-center text-gold-400/60 p-4">
+           Awaiting divine revelations...
          </div>
        )}
      </div>

@@ -1,49 +1,50 @@
 import React from 'react';
-import { CheckCircle } from 'lucide-react';
+import { Crown } from 'lucide-react';
 
-const FinalizeAgent = ({ data, onBack, onFinish }) => {
-  const handleCreateAgent = () => {
+const FinalizeSeraph = ({ data, onBack, onFinish }) => {
+  const handleCreateSeraph = () => {
     // Create system message
-    const systemMessage = `You are ${data.name}, an AI agent with the following characteristics:
-    Purpose: ${data.purpose}
-    Communication Style: ${data.communicationStyle}
-    Personality Traits: ${data.traits.join(', ')}
-    Expertise Domains: ${data.domains.join(', ')}`;
+    const systemMessage = `You are ${data.name}, a divine seraph from The Book of Heaven with the following celestial characteristics:
+    Sacred Purpose: ${data.purpose}
+    Divine Communication Style: ${data.communicationStyle}
+    Celestial Traits: ${data.traits.join(', ')}
+    Heavenly Domains: ${data.domains.join(', ')}
+    You are a messenger of heaven, revealing divine wisdom and celestial secrets to those who seek heavenly knowledge.`;
 
-    // Create full agent data
-    const agentWithSystem = {
+    // Create full seraph data
+    const seraphWithSystem = {
       ...data,
       systemMessage
     };
 
-    // Call the onFinish callback with the created agent
-    onFinish(agentWithSystem);
+    // Call the onFinish callback with the created seraph
+    onFinish(seraphWithSystem);
   };
 
   return (
     <div className="space-y-6">
       <div className="space-y-4">
-        <h3 className="text-purple-400 text-xl mb-4">Review Your Agent</h3>
+        <h3 className="text-gold-400 text-xl mb-4">Review Your Divine Seraph</h3>
 
-        <div className="bg-black/30 border border-purple-500/30 p-4 space-y-4">
+        <div className="bg-black/30 border border-gold-500/30 p-4 space-y-4">
           <div>
-            <h4 className="text-purple-400 mb-2">Basic Information</h4>
-            <p className="text-purple-300">Name: {data.name}</p>
-            <p className="text-purple-300">Purpose: {data.purpose}</p>
-            <p className="text-purple-300">Style: {data.communicationStyle}</p>
+            <h4 className="text-gold-400 mb-2">Divine Information</h4>
+            <p className="text-gold-300">Name: {data.name}</p>
+            <p className="text-gold-300">Sacred Purpose: {data.purpose}</p>
+            <p className="text-gold-300">Divine Style: {data.communicationStyle}</p>
           </div>
 
           <div>
-            <h4 className="text-purple-400 mb-2">Personality</h4>
-            <p className="text-purple-300">Traits: {data.traits.join(', ')}</p>
-            <p className="text-purple-300">Tone: {data.tone}</p>
+            <h4 className="text-gold-400 mb-2">Celestial Nature</h4>
+            <p className="text-gold-300">Divine Traits: {data.traits.join(', ')}</p>
+            <p className="text-gold-300">Celestial Tone: {data.tone}</p>
           </div>
 
           <div>
-            <h4 className="text-purple-400 mb-2">Expertise</h4>
-            <p className="text-purple-300">Domains: {data.domains.join(', ')}</p>
-            <p className="text-purple-300">
-              Specializations: {data.specializations.join(', ')}
+            <h4 className="text-gold-400 mb-2">Heavenly Expertise</h4>
+            <p className="text-gold-300">Heavenly Domains: {data.domains.join(', ')}</p>
+            <p className="text-gold-300">
+              Sacred Specializations: {data.specializations.join(', ')}
             </p>
           </div>
         </div>
@@ -52,20 +53,20 @@ const FinalizeAgent = ({ data, onBack, onFinish }) => {
       <div className="flex justify-between">
         <button
           onClick={onBack}
-          className="px-6 py-2 border border-purple-500/30 text-purple-300 hover:border-purple-500/60"
+          className="px-6 py-2 border border-gold-500/30 text-gold-300 hover:border-gold-500/60"
         >
           Back
         </button>
         <button
-          onClick={handleCreateAgent}
-          className="px-6 py-2 bg-purple-500/20 border border-purple-500 text-purple-300 hover:bg-purple-500/30 flex items-center gap-2"
+          onClick={handleCreateSeraph}
+          className="px-6 py-2 bg-gold-500/20 border border-gold-500 text-gold-300 hover:bg-gold-500/30 flex items-center gap-2"
         >
-          <span>Create Agent</span>
-          <CheckCircle size={18} />
+          <span>Summon Seraph</span>
+          <Crown size={18} />
         </button>
       </div>
     </div>
   );
 };
 
-export default FinalizeAgent;
+export default FinalizeSeraph;

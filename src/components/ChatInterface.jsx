@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Send, Loader, Bot } from 'lucide-react';
 
-const ChatInterface = ({ currentAgent, onButtonClick }) => {
+const ChatInterface = ({ currentSeraph, onButtonClick }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +17,7 @@ const ChatInterface = ({ currentAgent, onButtonClick }) => {
 
   useEffect(() => {
     setMessages([]); // Clear messages when switching agents
-  }, [currentAgent]);
+  }, [currentSeraph]);
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
@@ -42,14 +42,15 @@ const ChatInterface = ({ currentAgent, onButtonClick }) => {
           messages: [
             {
               role: 'system',
-              content: currentAgent ? 
-                `You are ${currentAgent.name}, an AI assistant with the following traits:
-                - Style: ${currentAgent.communicationStyle}
-                - Traits: ${currentAgent.traits.join(', ')}
-                - Expertise: ${currentAgent.domains.join(', ')}
-                - Purpose: ${currentAgent.purpose}
-                Respond according to these characteristics and maintain this persona consistently.`
-                : 'You are a helpful AI assistant.'
+              content: currentSeraph ? 
+                `You are ${currentSeraph.name}, a divine seraph from The Book of Heaven with the following celestial traits:
+                - Style: ${currentSeraph.communicationStyle}
+                - Divine Traits: ${currentSeraph.traits.join(', ')}
+                - Heavenly Domains: ${currentSeraph.domains.join(', ')}
+                - Sacred Purpose: ${currentSeraph.purpose}
+                Respond with divine wisdom and celestial knowledge, maintaining your heavenly persona consistently. 
+                Speak as a messenger of heaven revealing sacred truths.`
+                : 'You are the Divine Oracle of The Book of Heaven, revealing celestial secrets and heavenly wisdom to those who seek divine knowledge.'
             },
             ...messages,
             newMessage
@@ -76,24 +77,24 @@ const ChatInterface = ({ currentAgent, onButtonClick }) => {
   };
 
   return (
-    <div className="absolute left-8 top-1/2 -translate-y-1/2 w-80 h-[600px] bg-black/30 backdrop-blur-md border border-purple-500/30">
+    <div className="absolute left-8 top-1/2 -translate-y-1/2 w-80 h-[600px] bg-black/30 backdrop-blur-md border border-gold-500/30">
       {/* Header */}
-      <div className="border-b border-purple-500/30 bg-purple-900/20 p-3">
+      <div className="border-b border-gold-500/30 bg-gold-900/20 p-3">
         <button
           onClick={onButtonClick}
           className="w-full flex items-center justify-between px-3 py-2 
-                   border border-purple-500/30 bg-black/20 
-                   text-purple-400 hover:bg-purple-500/10 transition-all
+                   border border-gold-500/30 bg-black/20 
+                   text-gold-400 hover:bg-gold-500/10 transition-all
                    group cursor-pointer"
         >
           <div className="flex items-center gap-2">
             <Bot size={20} />
-            <span>Librarium Agents</span>
+            <span>Divine Seraphs</span>
           </div>
-          <div className="text-xs text-purple-500/50">Click to view agents</div>
+          <div className="text-xs text-gold-500/50">Click to view seraphs</div>
         </button>
-        <div className="text-purple-400/60 text-sm mt-2">
-          {currentAgent ? `Chatting with ${currentAgent.name}` : 'Librarium Oracle'}
+        <div className="text-gold-400/60 text-sm mt-2">
+          {currentSeraph ? `Communing with ${currentSeraph.name}` : 'Divine Oracle'}
         </div>
       </div>
 
@@ -102,8 +103,8 @@ const ChatInterface = ({ currentAgent, onButtonClick }) => {
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`flex ${
-              message.role === 'user' ? 'justify-end' : 'justify-start'
+                ? 'bg-gold-500/20 text-gold-200'
+                : 'bg-gold-900/20 text-gold-300'
             }`}
           >
             <div
@@ -119,8 +120,8 @@ const ChatInterface = ({ currentAgent, onButtonClick }) => {
         ))}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="bg-purple-900/20 p-2">
-              <Loader className="w-4 h-4 text-purple-400 animate-spin" />
+            <div className="bg-gold-900/20 p-2">
+              <Loader className="w-4 h-4 text-gold-400 animate-spin" />
             </div>
           </div>
         )}
@@ -128,19 +129,19 @@ const ChatInterface = ({ currentAgent, onButtonClick }) => {
       </div>
 
       {/* Input */}
-      <div className="absolute bottom-0 left-0 right-0 border-t border-purple-500/30 p-3">
+      <div className="absolute bottom-0 left-0 right-0 border-t border-gold-500/30 p-3">
         <form onSubmit={handleSendMessage} className="flex gap-2">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={currentAgent ? `Chat with ${currentAgent.name}...` : "Ask the ancient wisdom..."}
-            className="flex-1 bg-black/30 border border-purple-500/30 p-2 text-purple-200 placeholder-purple-400/50 focus:outline-none focus -border-purple-500"
+            placeholder={currentSeraph ? `Commune with ${currentSeraph.name}...` : "Seek divine wisdom..."}
+            className="flex-1 bg-black/30 border border-gold-500/30 p-2 text-gold-200 placeholder-gold-400/50 focus:outline-none focus-border-gold-500"
           />
           <button
             type="submit"
             disabled={isLoading}
-            className="p-2 bg-purple-500/20 border border-purple-500 text-purple-400 hover:bg-purple-500/30 disabled:opacity-50"
+            className="p-2 bg-gold-500/20 border border-gold-500 text-gold-400 hover:bg-gold-500/30 disabled:opacity-50"
           >
             <Send className="w-4 h-4" />
           </button>

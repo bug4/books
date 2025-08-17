@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, MessageSquare } from 'lucide-react';
+import { Crown, MessageSquare } from 'lucide-react';
 
 const BasicInfo = ({ data, updateData, onNext }) => {
   const handleSubmit = (e) => {
@@ -11,41 +11,41 @@ const BasicInfo = ({ data, updateData, onNext }) => {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="space-y-4">
         <div>
-          <label className="block text-purple-400 mb-2">Agent Name</label>
+          <label className="block text-gold-400 mb-2">Seraph Name</label>
           <input
             type="text"
             value={data.name}
             onChange={(e) => updateData({ name: e.target.value })}
-            className="w-full bg-black/30 border border-purple-500/30 p-2 text-white focus:outline-none focus:border-purple-500"
-            placeholder="Enter agent name..."
+            className="w-full bg-black/30 border border-gold-500/30 p-2 text-white focus:outline-none focus:border-gold-500"
+            placeholder="Enter seraph name..."
             required
           />
         </div>
 
         <div>
-          <label className="block text-purple-400 mb-2">Primary Purpose</label>
+          <label className="block text-gold-400 mb-2">Sacred Purpose</label>
           <textarea
             value={data.purpose}
             onChange={(e) => updateData({ purpose: e.target.value })}
-            className="w-full bg-black/30 border border-purple-500/30 p-2 text-white focus:outline-none focus:border-purple-500 h-24"
-            placeholder="Describe the main purpose of your agent..."
+            className="w-full bg-black/30 border border-gold-500/30 p-2 text-white focus:outline-none focus:border-gold-500 h-24"
+            placeholder="Describe the sacred purpose of your seraph..."
             required
           />
         </div>
 
         <div>
-          <label className="block text-purple-400 mb-2">Communication Style</label>
+          <label className="block text-gold-400 mb-2">Divine Communication Style</label>
           <div className="grid grid-cols-3 gap-4">
-            {['Formal', 'Balanced', 'Casual'].map((style) => (
+            {['Formal', 'Balanced', 'Gentle'].map((style) => (
               <button
                 key={style}
                 type="button"
                 onClick={() => updateData({ communicationStyle: style.toLowerCase() })}
                 className={`p-3 border ${
                   data.communicationStyle === style.toLowerCase()
-                    ? 'border-purple-500 bg-purple-500/20'
-                    : 'border-purple-500/30 hover:border-purple-500/60'
-                } text-purple-300`}
+                    ? 'border-gold-500 bg-gold-500/20'
+                    : 'border-gold-500/30 hover:border-gold-500/60'
+                } text-gold-300`}
               >
                 {style}
               </button>
@@ -57,7 +57,7 @@ const BasicInfo = ({ data, updateData, onNext }) => {
       <div className="flex justify-end">
         <button
           type="submit"
-          className="px-6 py-2 bg-purple-500/20 border border-purple-500 text-purple-300 hover:bg-purple-500/30"
+          className="px-6 py-2 bg-gold-500/20 border border-gold-500 text-gold-300 hover:bg-gold-500/30"
         >
           Next
         </button>

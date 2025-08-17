@@ -1,10 +1,10 @@
 import React from 'react';
-import { Brain, Sparkles } from 'lucide-react';
+import { Crown, Sparkles } from 'lucide-react';
 
 const Personality = ({ data, updateData, onNext, onBack }) => {
   const traits = [
-    'Analytical', 'Creative', 'Empathetic', 'Logical',
-    'Strategic', 'Detail-oriented', 'Innovative', 'Patient'
+    'Wise', 'Compassionate', 'Prophetic', 'Serene',
+    'Illuminating', 'Protective', 'Inspiring', 'Patient'
   ];
 
   const handleSubmit = (e) => {
@@ -23,7 +23,7 @@ const Personality = ({ data, updateData, onNext, onBack }) => {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="space-y-4">
         <div>
-          <label className="block text-purple-400 mb-2">Personality Traits</label>
+          <label className="block text-gold-400 mb-2">Divine Traits</label>
           <div className="grid grid-cols-4 gap-2">
             {traits.map((trait) => (
               <button
@@ -32,9 +32,9 @@ const Personality = ({ data, updateData, onNext, onBack }) => {
                 onClick={() => toggleTrait(trait)}
                 className={`p-2 border ${
                   data.traits.includes(trait)
-                    ? 'border-purple-500 bg-purple-500/20'
-                    : 'border-purple-500/30 hover:border-purple-500/60'
-                } text-purple-300 text-sm`}
+                    ? 'border-gold-500 bg-gold-500/20'
+                    : 'border-gold-500/30 hover:border-gold-500/60'
+                } text-gold-300 text-sm`}
               >
                 {trait}
               </button>
@@ -43,18 +43,18 @@ const Personality = ({ data, updateData, onNext, onBack }) => {
         </div>
 
         <div>
-          <label className="block text-purple-400 mb-2">Response Tone</label>
+          <label className="block text-gold-400 mb-2">Celestial Tone</label>
           <div className="grid grid-cols-3 gap-4">
-            {['Professional', 'Balanced', 'Friendly'].map((tone) => (
+            {['Majestic', 'Balanced', 'Gentle'].map((tone) => (
               <button
                 key={tone}
                 type="button"
                 onClick={() => updateData({ tone: tone.toLowerCase() })}
                 className={`p-3 border ${
                   data.tone === tone.toLowerCase()
-                    ? 'border-purple-500 bg-purple-500/20'
-                    : 'border-purple-500/30 hover:border-purple-500/60'
-                } text-purple-300`}
+                    ? 'border-gold-500 bg-gold-500/20'
+                    : 'border-gold-500/30 hover:border-gold-500/60'
+                } text-gold-300`}
               >
                 {tone}
               </button>
@@ -63,7 +63,7 @@ const Personality = ({ data, updateData, onNext, onBack }) => {
         </div>
 
         <div>
-          <label className="block text-purple-400 mb-2">Knowledge Depth</label>
+          <label className="block text-gold-400 mb-2">Divine Wisdom Depth</label>
           <input
             type="range"
             min="1"
@@ -72,10 +72,10 @@ const Personality = ({ data, updateData, onNext, onBack }) => {
             onChange={(e) => updateData({ knowledgeDepth: e.target.value })}
             className="w-full"
           />
-          <div className="flex justify-between text-purple-400 text-sm">
-            <span>Basic</span>
+          <div className="flex justify-between text-gold-400 text-sm">
+            <span>Novice</span>
             <span>Balanced</span>
-            <span>Expert</span>
+            <span>Divine</span>
           </div>
         </div>
       </div>
@@ -84,13 +84,13 @@ const Personality = ({ data, updateData, onNext, onBack }) => {
         <button
           type="button"
           onClick={onBack}
-          className="px-6 py-2 border border-purple-500/30 text-purple-300 hover:border-purple-500/60"
+          className="px-6 py-2 border border-gold-500/30 text-gold-300 hover:border-gold-500/60"
         >
           Back
         </button>
         <button
           type="submit"
-          className="px-6 py-2 bg-purple-500/20 border border-purple-500 text-purple-300 hover:bg-purple-500/30"
+          className="px-6 py-2 bg-gold-500/20 border border-gold-500 text-gold-300 hover:bg-gold-500/30"
         >
           Next
         </button>

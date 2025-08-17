@@ -4,20 +4,20 @@ import LoadingScreen from './components/LoadingScreen';
 import ChatInterface from './components/ChatInterface';
 import TokenStats from './components/TokenStats';
 import AgentCreationTool from './components/AgentCreation/AgentCreationTool';
-import MyAgentsModal from './components/MyAgentsModal';
+import MySeraphsModal from './components/MySeraphsModal';
 import ScanningInterface from './components/ScanningInterface';
 import WalletPopup from './components/WalletPopup';
 import Documentation from './components/Documentation';
 import Alert from './components/Alert';
-import { Plus, Twitter, Volume2, VolumeX, AlertCircle, Settings, Wallet, Book } from 'lucide-react';
+import { Plus, Twitter, Volume2, VolumeX, Eye, Settings, Wallet, BookOpen } from 'lucide-react';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSplineLoaded, setIsSplineLoaded] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
-  const [showAgentCreation, setShowAgentCreation] = useState(false);
-  const [showMyAgents, setShowMyAgents] = useState(false);
-  const [selectedAgent, setSelectedAgent] = useState(null);
+  const [showSeraphCreation, setShowSeraphCreation] = useState(false);
+  const [showMySeraphs, setShowMySeraphs] = useState(false);
+  const [selectedSeraph, setSelectedSeraph] = useState(null);
   const [isMusicPlaying, setIsMusicPlaying] = useState(true);
   const [showScanner, setShowScanner] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
@@ -133,19 +133,19 @@ function App() {
         <div className="absolute top-8 right-8 flex gap-4">
           <button
             onClick={() => setShowDocs(true)}
-            className="px-4 py-2 bg-black/30 backdrop-blur-md border border-purple-500/30 
-                      text-purple-400 hover:bg-purple-500/10 transition-colors 
+            className="px-4 py-2 bg-black/30 backdrop-blur-md border border-gold-500/30 
+                      text-gold-400 hover:bg-gold-500/10 transition-colors 
                       flex items-center gap-2"
           >
-            <Book size={20} />
+            <BookOpen size={20} />
             <span>Docs</span>
           </button>
           <a 
-            href="https://x.com/librarium"
+            href="https://x.com/bookofheaven"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-black/30 backdrop-blur-md border border-purple-500/30 
-                      text-purple-400 hover:bg-purple-500/10 transition-colors 
+            className="px-4 py-2 bg-black/30 backdrop-blur-md border border-gold-500/30 
+                      text-gold-400 hover:bg-gold-500/10 transition-colors 
                       flex items-center gap-2"
           >
             <Twitter size={20} />
@@ -153,8 +153,8 @@ function App() {
           </a>
           <button
             onClick={toggleMusic}
-            className="px-4 py-2 bg-black/30 backdrop-blur-md border border-purple-500/30 
-                      text-purple-400 hover:bg-purple-500/10 transition-colors 
+            className="px-4 py-2 bg-black/30 backdrop-blur-md border border-gold-500/30 
+                      text-gold-400 hover:bg-gold-500/10 transition-colors 
                       flex items-center gap-2"
           >
             {isMusicPlaying ? <Volume2 size={20} /> : <VolumeX size={20} />}
@@ -163,23 +163,23 @@ function App() {
         </div>
 
         <div className="pointer-events-auto">
-          {/* Chat Interface with My Agents button in header */}
+          {/* Chat Interface with My Seraphs button in header */}
           <ChatInterface 
-            currentAgent={selectedAgent} 
-            onButtonClick={() => setShowMyAgents(true)}
+            currentSeraph={selectedSeraph} 
+            onButtonClick={() => setShowMySeraphs(true)}
           />
 
-          {/* Create Agent Button */}
+          {/* Create Seraph Button */}
           <button
             onClick={() => {
-              console.log('Opening Agent Creation');
-              setShowAgentCreation(true);
+              console.log('Opening Seraph Creation');
+              setShowSeraphCreation(true);
             }}
-            className="absolute left-8 top-[calc(50%+310px)] w-80 p-3 border border-purple-500/30 
-                      bg-black/30 backdrop-blur-md text-purple-400 hover:bg-purple-500/10 flex items-center gap-2"
+            className="absolute left-8 top-[calc(50%+310px)] w-80 p-3 border border-gold-500/30 
+                      bg-black/30 backdrop-blur-md text-gold-400 hover:bg-gold-500/10 flex items-center gap-2"
           >
             <Plus size={20} />
-            <span>Create Agent</span>
+            <span>Summon Seraph</span>
           </button>
 
           {/* Control Buttons */}
@@ -187,8 +187,8 @@ function App() {
             {/* Settings Button */}
             <button
               onClick={() => setShowSettings(true)}
-              className="px-6 py-3 bg-black/30 backdrop-blur-md border border-purple-500/30 
-                        text-purple-400 hover:bg-purple-500/10 transition-colors 
+              className="px-6 py-3 bg-black/30 backdrop-blur-md border border-gold-500/30 
+                        text-gold-400 hover:bg-gold-500/10 transition-colors 
                         flex items-center gap-2"
             >
               <Settings size={20} />
@@ -198,19 +198,19 @@ function App() {
             {/* Scanner Button */}
             <button
               onClick={() => setShowScanner(prev => !prev)}
-              className="px-6 py-3 bg-black/30 backdrop-blur-md border border-purple-500/30 
-                        text-purple-400 hover:bg-purple-500/10 transition-colors 
+              className="px-6 py-3 bg-black/30 backdrop-blur-md border border-gold-500/30 
+                        text-gold-400 hover:bg-gold-500/10 transition-colors 
                         flex items-center gap-2"
             >
-              <AlertCircle size={20} />
-              <span>LIB Scanning</span>
+              <Eye size={20} />
+              <span>Divine Vision</span>
             </button>
 
             {/* Connect Wallet Button */}
             <button
               onClick={() => walletAddress ? setShowWalletPopup(true) : connectWallet()}
-              className="px-6 py-3 bg-black/30 backdrop-blur-md border border-purple-500/30 
-                        text-purple-400 hover:bg-purple-500/10 transition-colors 
+              className="px-6 py-3 bg-black/30 backdrop-blur-md border border-gold-500/30 
+                        text-gold-400 hover:bg-gold-500/10 transition-colors 
                         flex items-center gap-2"
             >
               <Wallet size={20} />
@@ -227,28 +227,28 @@ function App() {
 
         {/* Modals */}
         <div className="pointer-events-auto">
-          {showMyAgents && (
-            <MyAgentsModal 
-              isOpen={showMyAgents}
+          {showMySeraphs && (
+            <MySeraphsModal 
+              isOpen={showMySeraphs}
               onClose={() => {
-                console.log('Closing My Agents modal');
-                setShowMyAgents(false);
+                console.log('Closing My Seraphs modal');
+                setShowMySeraphs(false);
               }}
-              onSelectAgent={(agent) => {
-                console.log('Selected agent:', agent);
-                setSelectedAgent(agent);
-                setShowMyAgents(false);
+              onSelectSeraph={(seraph) => {
+                console.log('Selected seraph:', seraph);
+                setSelectedSeraph(seraph);
+                setShowMySeraphs(false);
               }}
             />
           )}
 
-          {showAgentCreation && (
+          {showSeraphCreation && (
             <AgentCreationTool 
-              onClose={() => setShowAgentCreation(false)}
+              onClose={() => setShowSeraphCreation(false)}
               onCreated={() => {
-                console.log('Agent created');
-                setShowAgentCreation(false);
-                setShowMyAgents(true);
+                console.log('Seraph created');
+                setShowSeraphCreation(false);
+                setShowMySeraphs(true);
               }}
             />
           )}
@@ -282,12 +282,12 @@ function App() {
       <div className="absolute top-0 left-0 right-0 z-20 pt-16">
         <div className="text-center">
           <h1 className="text-8xl font-bold mb-2 text-white relative z-10 tracking-wider font-[Orbitron]
-                     drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
-            Librarium
+                     drop-shadow-[0_0_10px_rgba(255,215,0,0.5)]">
+            The Book of Heaven
           </h1>
           
-          <p className="text-2xl font-[Quicksand] text-gray-200/90 tracking-widest">
-            Ancient wisdom meets AI
+          <p className="text-2xl font-[Quicksand] text-gold-200/90 tracking-widest">
+            Revealing celestial secrets through divine AI
           </p>
         </div>
       </div>
