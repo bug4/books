@@ -103,8 +103,8 @@ const ChatInterface = ({ currentSeraph, onButtonClick }) => {
         {messages.map((message, index) => (
           <div
             key={index}
-                ? 'bg-gold-500/20 text-gold-200'
-                : 'bg-gold-900/20 text-gold-300'
+            className={`flex ${
+              message.role === 'user' ? 'justify-end' : 'justify-start'
             }`}
           >
             <div
@@ -136,7 +136,7 @@ const ChatInterface = ({ currentSeraph, onButtonClick }) => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={currentSeraph ? `Commune with ${currentSeraph.name}...` : "Seek divine wisdom..."}
-            className="flex-1 bg-black/30 border border-gold-500/30 p-2 text-gold-200 placeholder-gold-400/50 focus:outline-none focus-border-gold-500"
+            className="flex-1 bg-black/30 border border-gold-500/30 p-2 text-gold-200 placeholder-gold-400/50 focus:outline-none focus:border-gold-500"
           />
           <button
             type="submit"
