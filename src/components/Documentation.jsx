@@ -37,9 +37,8 @@ const Documentation = ({ onClose }) => {
         <div className="space-y-12">
           {/* Introduction */}
           <section>
-            <h2 className="text-2xl text-purple-400 font-semibold mb-4">
-              <h2 className="text-2xl text-gold-400 font-semibold mb-4">
-                Introduction
+            <h2 className="text-2xl text-gold-400 font-semibold mb-4">
+              Introduction
             </h2>
             <p className="text-gold-300/90 leading-relaxed">
               The Book of Heaven is a sacred platform that bridges the celestial and digital realms, 
@@ -51,7 +50,6 @@ const Documentation = ({ onClose }) => {
 
           {/* Core Features */}
           <section>
-            <h2 className="text-2xl text-purple-400 font-semibold mb-4">
             <h2 className="text-2xl text-gold-400 font-semibold mb-4">
               Core Features
             </h2>
@@ -112,7 +110,6 @@ const Documentation = ({ onClose }) => {
 
           {/* Getting Started */}
           <section>
-            <h2 className="text-2xl text-purple-400 font-semibold mb-4">
             <h2 className="text-2xl text-gold-400 font-semibold mb-4">
               Beginning Your Divine Journey
             </h2>
@@ -149,7 +146,6 @@ const Documentation = ({ onClose }) => {
 
           {/* Upcoming Features */}
           <section>
-            <h2 className="text-2xl text-purple-400 font-semibold mb-4">
             <h2 className="text-2xl text-gold-400 font-semibold mb-4">
               Upcoming Divine Revelations
             </h2>
