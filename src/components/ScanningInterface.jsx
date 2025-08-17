@@ -64,7 +64,7 @@ const TokenCard = ({ token, walletConnected, showAlert }) => {
            {token.symbol?.charAt(0)}
          </div>
        )}
-
+                 className="text-gold-400 hover:text-gold-300"
        {/* Token Info */}
        <div className="flex-1">
          <div className="flex justify-between items-start">
@@ -74,7 +74,7 @@ const TokenCard = ({ token, walletConnected, showAlert }) => {
            </div>
            <div className="text-purple-400/60 text-xs">
              {new Date(token.timestamp).toLocaleTimeString()}
-           </div>
+                 className="text-gold-400 hover:text-gold-300"
          </div>
 
          {/* Contract Address */}
@@ -83,8 +83,8 @@ const TokenCard = ({ token, walletConnected, showAlert }) => {
              {token.mint}
            </div>
            <button
-             onClick={() => copyToClipboard(token.mint)}
-             className="text-purple-400 hover:text-purple-300 p-1"
+             className="px-4 py-1.5 bg-gold-500/10 border border-gold-500/30 
+                      text-gold-400 hover:bg-gold-500/20 transition-colors 
              title="Copy contract address"
            >
              {copied ? <CheckCircle size={16} /> : <Copy size={16} />}
